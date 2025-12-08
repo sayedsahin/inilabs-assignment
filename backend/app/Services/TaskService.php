@@ -10,6 +10,7 @@ class TaskService
     public function getPaginated(int $perPage = 10)
     {
         return Task::latest()
+            ->select('id', 'user_id', 'title', 'status', 'created_at', 'updated_at')
             ->where('user_id', auth('sanctum')->id())
             ->paginate($perPage);
     }

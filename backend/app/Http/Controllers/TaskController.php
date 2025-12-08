@@ -26,7 +26,11 @@ class TaskController extends Controller
      */
     public function index()
     {
-        $tasks = $this->service->getPaginated(20);
+        $page = request()->input('page', 1);
+        $items_per_page = 20;
+		$items = ($page - 1) * $items_per_page;
+
+        $tasks = $this->service->getPaginated($items);
         return TaskResource::collection($tasks);
     }
 
