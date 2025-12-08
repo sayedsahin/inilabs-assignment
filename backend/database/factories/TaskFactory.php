@@ -21,7 +21,7 @@ class TaskFactory extends Factory
         return [
             'user_id'     => User::inRandomOrder()->first()->id,
             'title'       => $this->faker->sentence(4),
-            'description' => $this->faker->paragraph(),
+            'description' => $this->faker->paragraphs(3, true),
             'status'      => $this->faker->randomElement(TaskStatus::cases()),
         ];
     }
